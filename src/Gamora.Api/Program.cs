@@ -1,24 +1,36 @@
+using Gamora.Api.Common.Auth;
+using Gamora.Api.Common.Data;
+using Gamora.Api.Common.Modules;
+using Gamora.Api.Modules.Users;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddProblemDetails();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
+// Register every module here (like `imports: [...]` in a NestJS AppModule).
+builder.Services.AddModules(builder.Configuration,
+    new UsersModule());
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference();   // thêm dòng này
+    app.MapScalarApiReference();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

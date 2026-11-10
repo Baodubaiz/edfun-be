@@ -1,6 +1,26 @@
-@Gamora.Api_HostAddress = http://localhost:5236
+@host = http://localhost:5236
 
-GET {{Gamora.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Register
+POST {{host}}/api/users/register
+Content-Type: application/json
 
-###
+{
+  "userName": "player1",
+  "email": "player1@example.com",
+  "password": "Passw0rd123",
+  "displayName": "Player One"
+}
+
+### Login
+# @name login
+POST {{host}}/api/users/login
+Content-Type: application/json
+
+{
+  "userNameOrEmail": "player1",
+  "password": "Passw0rd123"
+}
+
+### Current user
+GET {{host}}/api/users/me
+Authorization: Bearer {{login.response.body.$.accessToken}}
