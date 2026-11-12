@@ -1,5 +1,6 @@
-using Edfun.Api.Common.Data;
 using Edfun.Api.Common.Modules;
+using Edfun.Api.Infrastructure.Persistence;
+using Edfun.Api.Modules.Users.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace Edfun.Api.Modules.Users;

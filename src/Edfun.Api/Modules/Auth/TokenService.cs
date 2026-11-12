@@ -1,10 +1,10 @@
 using System.Security.Claims;
-using Edfun.Api.Modules.Users;
+using Edfun.Api.Modules.Users.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Edfun.Api.Common.Auth;
+namespace Edfun.Api.Modules.Auth;
 
 /// <summary>Creates JWT access tokens (like JwtService in NestJS).</summary>
 public sealed class TokenService(IOptions<JwtOptions> options)

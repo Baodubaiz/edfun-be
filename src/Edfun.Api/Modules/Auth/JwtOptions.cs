@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Edfun.Api.Common.Auth;
+namespace Edfun.Api.Modules.Auth;
 
 public sealed class JwtOptions
 {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Edfun.Api.Modules.Users;
+namespace Edfun.Api.Modules.Users.Entities;
 
 public sealed class User : IdentityUser<Guid>
 {

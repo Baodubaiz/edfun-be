@@ -1,9 +1,9 @@
-using Edfun.Api.Modules.Users;
+using Edfun.Api.Modules.Users.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Edfun.Api.Common.Data;
+namespace Edfun.Api.Infrastructure.Persistence;
 
 /// <summary>
 /// The single DbContext for the whole app.
